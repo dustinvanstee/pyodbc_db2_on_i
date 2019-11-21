@@ -27,7 +27,7 @@ click here -> ![Image description](images/download.png)
 
 then sign in using your IBMid
 
-Then select ACS for linux ![ACS](images/acs.png) and agree ![agree](agree.png)
+Then select ACS for linux ![ACS](images/acs.png) and agree ![agree](images/agree.png)
 
 ## Configure IBM I ACS software
 
