@@ -45,23 +45,6 @@ cd ppcle64
 yum install ibm-iaccess-1.1.0.12-1.0.ppc64le.rpm
 ```
 
-Once thats installed, you will need create a connection file in /etc/odbc.ini (or in $HOME/.odbc.ini) .  Here is the one I used ... 
-cat /etc/odbc.ini
-
-```[MYDSN]
-Description=My IBM i System
-Driver=IBM i Access for Linux ODBC Driver
-System=*****.example.com
-UserID=*******
-Password=***********
-```
-
-Make special note of the name you selected in brackets.  This will be used in our python code.  Also note, your **driver string needs to match exactly one of the drivers in /etc/odbcinst.ini**  
-
-```cat /etc/odbcinst.ini | grep -i driver```
-
-Once you have your /etc/odbc.ini your all set, and ready to do some python!
-
 ### Python Setup
 For python, I just needed to install pyodbc package
 ```pip install pyodbc```
@@ -71,59 +54,13 @@ I have 2 python files create_and_write_db.py and read_db.py.   These 2 files sho
 
 
 #### Create a table, and insert rows
-```import pyodbc
-import pandas
-
-cnx = pyodbc.connect(
-        'Driver=IBM i Access ODBC Driver; '
-        'System=*****; '
-        'UserID=******; '
-        'Password=*****;'
-        )
-
-cursor = cnx.cursor()
-sql = "set schema dustin"
-cursor.execute(sql)
-cursor.commit()
-
-sql = "CREATE TABLE dustin.tmp(col1 INT, col2 INT, PRIMARY KEY(col1))"
-cursor.execute(sql)
-cursor.commit()
-
-sql = "INSERT INTO dustin.tmp (col1, col2) VALUES ( 1, 2)"
-cursor.execute(sql)
-cursor.commit()
-
-sql = "INSERT INTO dustin.tmp (col1, col2) VALUES ( 9, 2)"
-cursor.execute(sql)
-cursor.commit()
-```
+Run the command below to create a schema and table names EXAMPLE_S.TMP and insert 2 rows into it.
+```python create_and_write_db.py  ```
 
 #### Read the table we created 
-cat read_db.py -> 
-```import pyodbc
-import pandas
+Run the command below to read out the data you added.  This should be enough to get started doing a lot more programmatic tasks with python.
+```python read_db.py ```
 
-cnx = pyodbc.connect(
-        'Driver=IBM i Access ODBC Driver; '
-        'System=*****; '
-        'UserID=*****; '
-        'Password=*****;'
-        )
-
-sql = "Select * from dustin.tmp"
-data = pandas.read_sql(sql, cnx)
-print(data)
-```
-
-And the output as expected ->
-python read_db.py
-```
-   COL1  COL2
-0     1     2
-1     9     2
-```
-
-
-
+# Summary
+Congratulations, you should now be able to integrate your python applications with IBM DB2 on i
 
