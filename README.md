@@ -34,7 +34,8 @@ Then select ACS for linux ![ACS](images/acs.png) and agree ![agree](images/agree
 If you downloaded the right file, you should have a file name something like this *IBMiAccess_v1r1_LinuxAP.zip*
 
 Now run these commands to install
-```unzip IBMiAccess_v1r1_LinuxAP.zip
+```
+unzip IBMiAccess_v1r1_LinuxAP.zip
 cd ppcle64
 yum install ibm-iaccess-1.1.0.12-1.0.ppc64le.rpm
 ```
