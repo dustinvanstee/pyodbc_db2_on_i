@@ -40,7 +40,7 @@ cd ppcle64
 yum install ibm-iaccess-1.1.0.12-1.0.ppc64le.rpm
 ```
 
-Note, if you have errors with sql.h and other header files, you may require the standard ODBC library for power.  You will need to install those as a prerequisite.  Here is an example of grabbing them from centos repo if you don't have Redhat support.
+Note, if you have errors with sql.h and other header files, you may require the standard ODBC library for power.  You will need to install these repos below as a prerequisite.  Here is an example of grabbing them from centos repo if you don't have Redhat support.
 ```
 yum install https://buildlogs.centos.org/centos/7/fasttrack/ppc64le/Packages/unixODBC-devel-2.3.1-11.el7.ppc64le.rpm
 yum install https://buildlogs.centos.org/centos/7/fasttrack/ppc64le/Packages/unixODBC-2.3.1-11.el7.ppc64le.rpm
